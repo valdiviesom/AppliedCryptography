@@ -58,8 +58,8 @@ public class CalcTest extends Calc {
         int a, n;
         for (int i = 0; i < 20; i++) {
             do {
-                a = Generator.rand(2, 30);
-                n = Generator.rand(2, 30);
+                a = Generator.rand(2, 3002);
+                n = Generator.rand(2, 3000);
             } while (gcd(a, n) > 1);
             assertEquals(1, mod(a * multiplicativeInverseMod(a, n), n));
         }

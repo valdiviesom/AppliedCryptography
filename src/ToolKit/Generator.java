@@ -30,13 +30,13 @@ public class Generator extends Calc{
     }
 
     public static int primeOfDigits(int n) {
-        int min = (int) Math.pow(10, n);
-        int max = (int) Math.pow(10, n+1);
+        int min = power(10,n-1);
+        int max = power(10,n)-1;
         int p;
         do {
             int x = rand(min, max);
             p = nextPrime(x);
-        } while (p < max);
+        } while (p > max);
         return p;
     }
 

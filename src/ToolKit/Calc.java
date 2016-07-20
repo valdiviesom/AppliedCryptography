@@ -10,6 +10,8 @@ import java.util.Set;
  * Created by Mauricio on 7/19/2016.
  */
 public class Calc {
+    public static int maxIntValue = 2147483647;
+
     public static int modularExp(int base, int exp, int mod) {
         //Todo: not fixed
         if (mod == 1) return 0;
@@ -77,6 +79,7 @@ public class Calc {
     }
 
     public static int multiplicativeInverseMod(int a, int n) {
+        //TODO: here is the problem with RSA, fix this function for large values;
         int phiN = eulerTotient(n);
         return modularExp(a, phiN - 1, n);
     }
