@@ -1,5 +1,11 @@
 package ToolKit;
 
+import FactoringAlgorithms.PrimeFactorization;
+import PrimalityTest.PrimalityTest;
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by Mauricio on 7/19/2016.
  */
@@ -55,5 +61,23 @@ public class Calc {
         int r = a % n;
         if (r < 0) return r + n;
         return r;
+    }
+
+    public static int eulerTotient(int n) {
+        if (PrimalityTest.isPrime(n)) return n - 1;
+        Set<Integer> divisors = new HashSet<Integer>();
+        divisors.addAll(PrimeFactorization.primeFactorization(n));
+        double product = 1;
+        for (int p : divisors) {
+            double x = (double) 1 / p;
+            x = (double) 1 - x;
+            product *= (double) x;
+        }
+        return (int) (n * product);
+    }
+
+    public static int multiplicativeInverseMod(int a, int n) {
+        int phiN = eulerTotient(n);
+        return modularExp(a, phiN - 1, n);
     }
 }

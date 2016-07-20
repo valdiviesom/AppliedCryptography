@@ -23,18 +23,19 @@ public class PrimeFactorizationTests {
             b = Generator.rand(0, 2000);
         } while (Calc.gcd(a, b) > 1);
         int product;
+        int n;
         for (int i = 2; i < 150; i++) {
-            product=1;
-            int n = a * i + b;
+            product = 1;
+            n = a * i + b;
             List<Integer> factors = PrimeFactorization.primeFactorization(n);
             //System.out.print("The prime factors of " + n + " are: ");
             //System.out.println();
             for (Integer x : factors) {
                 //System.out.print(x + " ");
                 assertTrue(PrimalityTest.isPrime(x));
-                product*=x;
+                product *= x;
             }
-            assertEquals(n,product);
+            assertEquals(n, product);
         }
     }
 }
