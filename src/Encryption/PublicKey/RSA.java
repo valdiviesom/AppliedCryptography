@@ -26,7 +26,6 @@ public class RSA {
         do {
             p = Generator.primeOfDigits(size);
             q = Generator.primeOfDigits(size);
-            assert (PrimalityTest.isPrime(p) && PrimalityTest.isPrime(q));
         } while (p == q);
         int n = p * q;
         int phiN = (p - 1) * (q - 1);
@@ -34,8 +33,8 @@ public class RSA {
         do {
             e = Generator.rand(2, phiN - 1);
         } while (Calc.gcd(e, phiN) > 1);
-        int d = Calc.multiplicativeInverseMod(e, phiN);
-        assert (1 == Calc.mod(e * d, phiN));
+        int d = Calc.inverse(e, phiN);
+        //assert (1 == Calc.mod(e * d, phiN));
         publicKey = e;
         publicMod = n;
         privateKey = d;
