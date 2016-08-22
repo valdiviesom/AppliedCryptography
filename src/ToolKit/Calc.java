@@ -15,7 +15,7 @@ public class Calc {
     public static int maxIntValue = 2147483647;
 
     public static int modularExp(int base, int exp, int mod) {
-        //Todo: not fixed
+        // tested
         if (mod == 1) return 0;
         int rsf = 1;
         base = base % mod;
@@ -31,7 +31,7 @@ public class Calc {
     }
 
     public static BigInteger modPow(BigInteger base, BigInteger expt, BigInteger mod) {
-        System.out.println("modpow");
+        // tested
         BigInteger rsf = BigInteger.ONE;
         while (expt.compareTo(BigInteger.ZERO) == 1) {
             if (mod(expt, BigInteger.valueOf(2)).compareTo(BigInteger.ONE) == 0) {
@@ -56,6 +56,8 @@ public class Calc {
     }
 
     public static int power(int base, int expt) {
+        //tested
+        assert (!(base == 0 && expt == 0));
         if (expt < 0) return power(1 / base, -expt);
         if (expt == 0) return 1;
         if (expt == 1) return base;
@@ -71,6 +73,7 @@ public class Calc {
     }
 
     public static int gcd(int a, int b) {
+            // tested
         if (a == b) return a;
         if (a < b) return gcd(b, a);
         if (b == 1) return 1;
@@ -81,12 +84,17 @@ public class Calc {
         return gcd(b, r);
     }
 
+    public boolean divides(int a, int b) {
+        return (b % a == 0);
+    }
+
     public static BigInteger positive(BigInteger x) {
         if (x.compareTo(BigInteger.ZERO) == -1) return x.negate();
         return x;
     }
 
     public static BigInteger gcd(BigInteger a, BigInteger b) {
+            //tested
         a = positive(a);
         b = positive(b);
         if (b.compareTo(BigInteger.ONE) == 0) return b;
